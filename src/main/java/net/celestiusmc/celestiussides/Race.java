@@ -4,6 +4,8 @@
  */
 package net.celestiusmc.celestiussides;
 
+import org.bukkit.Location;
+
 /**
  * Represents a race.
  */
@@ -16,10 +18,21 @@ public enum Race {
     BLACK,
     AFRICAN_PYGMY,
     REDNECK,
-    CHINKY;
+    CHINKY,
+    NERD;
 
     public String getNiceName() {
         return name().toLowerCase();
+    }
+
+    /**
+     * Gets the spawn location of this race.
+     * 
+     * @return This race's spawn location.
+     */
+    public Location getSpawnLocation() {
+        return CelestiusSides.getInstance().getRaceManager().getSpawnLocation(
+                this);
     }
 
     public static Race fromString(String name) {

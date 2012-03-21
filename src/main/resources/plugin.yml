@@ -7,10 +7,11 @@ website: ${project.url}
 main: net.celestiusmc.celestiussides.CelestiusSides
 
 commands:
-  xiyaddo:
-    description: xiyad
-    usage: /xiyad
-  
-  humando:
-    description: humando
-    usage: /humando
+  race:
+    description: The race base command.
+    usage: /race 
+    
+permissions:
+  sides.setspawn:
+    description: Set the spawn of a race.
+    default: op
