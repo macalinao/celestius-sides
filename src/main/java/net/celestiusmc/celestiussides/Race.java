@@ -34,7 +34,15 @@ public enum Race {
         return CelestiusSides.getInstance().getRaceManager().getSpawnLocation(
                 this);
     }
+    
+    public String getPermission() {
+        return "race." + getNiceName();
+    }
 
+    public String getGroupName() {
+        return "race_" + getNiceName();
+    }
+    
     public static Race fromString(String name) {
         name = name.toUpperCase().replace(' ', '_').replace('-', '_');
         try {

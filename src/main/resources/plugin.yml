@@ -15,3 +15,30 @@ permissions:
   sides.setspawn:
     description: Set the spawn of a race.
     default: op
+    
+  race.human:
+    description: Human race
+    
+  race.xiyad:
+    description: Xiyad race
+    
+  race.none:
+    description: None race
+    
+  race.african_pygmy:
+    description: African pygmy race
+    
+  race.black:
+    description: Black race
+    
+  race.redneck:
+    description: Redneck race
+    
+  race.chinky:
+    description: Chinky race
+    
+  race.nerd:
+    description: Nerd race
+    
+  race.none:
+    description: None race
