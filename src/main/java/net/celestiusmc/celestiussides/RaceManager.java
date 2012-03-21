@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import net.celestiusmc.celestiussides.util.LocationSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
 
 /**
  * Manages the player races.
@@ -30,12 +31,30 @@ public class RaceManager {
 
     private Map<Race, Location> raceSpawns = new EnumMap<Race, Location>(
             Race.class);
-    
+
     private CelestiusSides plugin;
 
     public RaceManager(CelestiusSides plugin) {
         this.plugin = plugin;
+        load();
         buildCache();
+    }
+
+    private void load() {
+        ConfigurationSection spawns = plugin.getConfig().getConfigurationSection(
+                "spawn");
+        if (spawns == null) {
+            spawns = plugin.getConfig().createSection("spawn");
+        }
+
+        for (String key : spawns.getKeys(false)) {
+            Map<String, Object> spawnMap = (Map<String, Object>) spawns.get(key);
+            Race race = Race.fromString(key);
+            if (race != null) {
+                Location loc = LocationSerializer.deserializeFull(spawnMap);
+                raceSpawns.put(race, loc);
+            }
+        }
     }
 
     private void buildCache() {
@@ -66,7 +85,7 @@ public class RaceManager {
 
     /**
      * Sets a race's spawn location.
-     * 
+     *
      * @param race The race.
      * @param location The location to set.
      */
