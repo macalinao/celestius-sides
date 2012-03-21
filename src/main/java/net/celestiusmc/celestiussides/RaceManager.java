@@ -75,6 +75,12 @@ public class RaceManager {
         });
     }
 
+    /**
+     * Gets the spawn location of a race.
+     * 
+     * @param race The race to get the spawn of.
+     * @return The race.
+     */
     public Location getSpawnLocation(Race race) {
         Location location = raceSpawns.get(race);
         if (location == null) {
@@ -96,6 +102,12 @@ public class RaceManager {
         plugin.getConfig().set("spawn." + race.getNiceName(), serialized);
     }
 
+    /**
+     * Gets the race of a given player.
+     * 
+     * @param player The player's name.
+     * @return The race of the player.
+     */
     public Race getRace(String player) {
         try {
             return raceCache.get(player);
