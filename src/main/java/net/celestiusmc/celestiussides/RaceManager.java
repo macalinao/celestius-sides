@@ -14,17 +14,27 @@ import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
+import net.celestiusmc.celestiussides.util.LocationSerializer;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 
 /**
  * Manages the player races.
  */
-public class RacistGuy {
+public class RaceManager {
 
     private Map<Race, List<String>> races =
             new EnumMap<Race, List<String>>(Race.class);
+
     private Cache<String, Race> raceCache;
 
-    public RacistGuy() {
+    private Map<Race, Location> raceSpawns = new EnumMap<Race, Location>(
+            Race.class);
+    
+    private CelestiusSides plugin;
+
+    public RaceManager(CelestiusSides plugin) {
+        this.plugin = plugin;
         buildCache();
     }
 
@@ -42,7 +52,29 @@ public class RacistGuy {
                 }
                 return Race.NONE;
             }
+
         });
+    }
+
+    public Location getSpawnLocation(Race race) {
+        Location location = raceSpawns.get(race);
+        if (location == null) {
+            setSpawnLocation(race, Bukkit.getWorlds().get(0).getSpawnLocation());
+        }
+        return location;
+    }
+
+    /**
+     * Sets a race's spawn location.
+     * 
+     * @param race The race.
+     * @param location The location to set.
+     */
+    public void setSpawnLocation(Race race, Location location) {
+        raceSpawns.put(race, location);
+        Map<String, Object> serialized =
+                LocationSerializer.serializeFull(location);
+        plugin.getConfig().set("spawn." + race.getNiceName(), serialized);
     }
 
     public Race getRace(String player) {
@@ -54,4 +86,5 @@ public class RacistGuy {
         }
         return null;
     }
+
 }

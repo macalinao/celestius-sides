@@ -12,6 +12,10 @@ public enum Race {
     XIYAD,
     NONE;
 
+    public String getNiceName() {
+        return name().toLowerCase();
+    }
+
     public static Race fromString(String name) {
         name = name.toUpperCase().replace(' ', '_').replace('-', '_');
         try {

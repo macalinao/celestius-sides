@@ -13,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class CelestiusSides extends JavaPlugin {
     private static CelestiusSides _instance;
     
+    private RaceManager raceManager;
+    
     @Override
     public void onDisable() {
         _instance = null;
@@ -22,6 +24,7 @@ public class CelestiusSides extends JavaPlugin {
     @Override
     public void onEnable() {
         _instance = this;
+        raceManager = new RaceManager(this);
         getServer().getPluginManager().registerEvents(new CSListener(), this);
         getLogger().log(Level.INFO, "Plugin enabled.");
     }
