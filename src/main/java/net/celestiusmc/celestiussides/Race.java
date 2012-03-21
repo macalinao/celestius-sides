@@ -8,9 +8,15 @@ package net.celestiusmc.celestiussides;
  * Represents a race.
  */
 public enum Race {
+
     HUMAN,
     XIYAD,
-    NONE;
+    NONE,
+    //Racist part
+    BLACK,
+    AFRICAN_PYGMY,
+    REDNECK,
+    CHINKY;
 
     public String getNiceName() {
         return name().toLowerCase();
