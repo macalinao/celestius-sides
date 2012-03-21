@@ -1,0 +1,16 @@
+name: ${project.name}
+description: ${project.description}
+author: AlbireoX
+version: ${release.number}
+website: ${project.url}
+
+main: net.celestiusmc.celestiussides.CelestiusSides
+
+commands:
+  xiyaddo:
+    description: xiyad
+    usage: /xiyad
+  
+  humando:
+    description: humando
+    usage: /humando
