@@ -8,11 +8,9 @@ import java.util.logging.Level;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- *
- * @author simplyianm
+ * Celestius sides main plugin class.
  */
 public class CelestiusSides extends JavaPlugin {
-
     @Override
     public void onDisable() {
         getLogger().log(Level.INFO, "Plugin disabled.");
@@ -20,7 +18,8 @@ public class CelestiusSides extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getServer().getPluginManager().registerEvents(new CSListener(), this);
         getLogger().log(Level.INFO, "Plugin enabled.");
     }
-    
+
 }
