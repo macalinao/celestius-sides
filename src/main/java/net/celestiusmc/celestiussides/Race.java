@@ -5,12 +5,20 @@
 package net.celestiusmc.celestiussides;
 
 /**
- *
- * @author simplyianm
+ * Represents a race.
  */
 public enum Race {
     HUMAN,
     XIYAD,
     BLACK_GUY;
+
+    public static Race fromString(String name) {
+        name = name.toUpperCase().replace(' ', '_').replace('-', '_');
+        try {
+            return Race.valueOf(name);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 
 }
