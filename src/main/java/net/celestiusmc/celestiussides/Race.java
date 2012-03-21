@@ -10,7 +10,7 @@ package net.celestiusmc.celestiussides;
 public enum Race {
     HUMAN,
     XIYAD,
-    BLACK_GUY;
+    NONE;
 
     public static Race fromString(String name) {
         name = name.toUpperCase().replace(' ', '_').replace('-', '_');
